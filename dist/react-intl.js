@@ -3385,7 +3385,7 @@ function formatMessage(config, state) {
 
   invariant_1(id, '[React Intl] An `id` must be provided to format a message.');
 
-  var message = messages && messages[id];
+  var message = messages && typeof messages[id] !== 'undefined';
   var hasValues = Object.keys(values).length > 0;
 
   // Avoid expensive message formatting for simple messages without values. In
@@ -3417,7 +3417,7 @@ function formatMessage(config, state) {
     }
   }
 
-  if (!formattedMessage && defaultMessage) {
+  if (typeof formattedMessage === 'undefined' && typeof defaultMessage !== 'undefined') {
     try {
       var _formatter = state.getMessageFormat(defaultMessage, defaultLocale, defaultFormats);
 

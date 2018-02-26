@@ -182,7 +182,7 @@ export function formatMessage(
   // `id` is a required field of a Message Descriptor.
   invariant(id, '[React Intl] An `id` must be provided to format a message.');
 
-  const message = messages && messages[id];
+  const message = messages && typeof messages[id] !== 'undefined';
   const hasValues = Object.keys(values).length > 0;
 
   // Avoid expensive message formatting for simple messages without values. In
@@ -224,7 +224,7 @@ export function formatMessage(
     }
   }
 
-  if (!formattedMessage && defaultMessage) {
+  if (typeof formattedMessage === 'undefined' && typeof defaultMessage !== 'undefined') {
     try {
       let formatter = state.getMessageFormat(
         defaultMessage,
