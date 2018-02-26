@@ -188,7 +188,12 @@ export function formatMessage(
   // Avoid expensive message formatting for simple messages without values. In
   // development messages will always be formatted in case of missing values.
   if (!hasValues && process.env.NODE_ENV === 'production') {
-    return message || defaultMessage || id;
+    if (typeof message !== 'undefined') {
+      return message;
+    } else if (typeof defaultMessage !== 'undefined') {
+      return defaultMessage;
+    }
+    return id;
   }
 
   let formattedMessage;
