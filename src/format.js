@@ -243,7 +243,7 @@ export function formatMessage(
     }
   }
 
-  if (!formattedMessage) {
+  if (typeof formattedMessage === 'undefined') {
     if (process.env.NODE_ENV !== 'production') {
       console.error(
         `[React Intl] Cannot format message: "${id}", ` +
