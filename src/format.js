@@ -213,7 +213,7 @@ export function formatMessage(
       // when no `messages` are passed into the <IntlProvider> for the
       // default locale, and a default message is in the source.
       if (
-        !defaultMessage ||
+        typeof defaultMessage === 'undefined' ||
         (locale && locale.toLowerCase() !== defaultLocale.toLowerCase())
       ) {
         console.error(
