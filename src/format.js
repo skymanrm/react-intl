@@ -193,7 +193,7 @@ export function formatMessage(
 
   let formattedMessage;
 
-  if (message) {
+  if (typeof message !== 'undefined') {
     try {
       let formatter = state.getMessageFormat(message, locale, formats);
 
