@@ -259,7 +259,14 @@ export function formatMessage(
     }
   }
 
-  return formattedMessage || message || defaultMessage || id;
+  if (typeof formattedMessage !== 'undefined') {
+    return formattedMessage;
+  } else if (typeof message !== 'undefined') {
+    return message;
+  } else if (typeof defaultMessage !== 'undefined') {
+    return defaultMessage;
+  }
+  return id;
 }
 
 export function formatHTMLMessage(
